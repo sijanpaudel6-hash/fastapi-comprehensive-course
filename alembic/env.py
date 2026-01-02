@@ -4,10 +4,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from sqlmodel import SQLModel
 from app.models import User, Post, Vote  # Import your models here
-# from app.config import settings
-import os
-
-DATABASE_URL = os.getenv("DATABASE_URL")
+from app.config import settings
 
 from alembic import context
 
@@ -15,9 +12,8 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-# SQLModel_DATABASE_URL = f'postgresql+psycopg://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
-# config.set_main_option("sqlalchemy.url", SQLModel_DATABASE_URL)
-config.set_main_option("sqlalchemy.url", DATABASE_URL)
+SQLModel_DATABASE_URL = f'postgresql+psycopg://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
+config.set_main_option("sqlalchemy.url", SQLModel_DATABASE_URL)
 
 
 # Interpret the config file for Python logging.
