@@ -87,4 +87,3 @@ class PostWithOwnerVotes(SQLModel):
 class Vote(SQLModel, table=True):
     post_id: int = Field(foreign_key="post.id", primary_key=True, ondelete="CASCADE")
     user_id: int = Field(foreign_key="user.id", primary_key=True, ondelete="CASCADE")
-    fake: str | None = None  # Placeholder field to avoid empty table issue
